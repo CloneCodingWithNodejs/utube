@@ -1,0 +1,10 @@
+{
+  "name": "utube",
+  "version": "1.0.0",
+  "description": "Cloning Youtube whit vanilla and NodeJS",
+  "main": "index.js",
+  "author": "KIM Hyung Jun",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
