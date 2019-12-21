@@ -1,32 +1,16 @@
+
 //const express = require('express')
 import express from "express";
-import logger from "morgan";
+import morgan from "morgan";
 import helmet from "helmet";
-import cookieParser from "cookieParser";
+import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
-
+import userRouter  from "./routers/userRouter";
+import videoRouter from "./routers/videoRouter";
+import globalRouter from "./routers/globalRouter";
 
 const app = express()
 
-const PORT = 4000;
-
-const handleListening = () =>
-    console.log('Listening on : http://localhost:${PORT}');
-
-
-
-// function handleHome(req,res){
-//  res.send("Hello from Home");
-// }
-
-//request, response Object 파라미터 
-const handleHome = (req, res) => res.send("Hello from home");
-
-// function handleProfile(req,res){
-//     res.send("You are on my profile");
-// }
-
-const handleProfile = (req, res) => res.send("Yor are on my profile");
 
 const betweenHome = (req, res, next) => {
     console.log("I'm between");
@@ -45,15 +29,11 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended:true}));
 //json에 대한 데이터도 서버가 이해해줬음 좋겠음 
 app.use(bodyParser.json());
-
 app.use(helmet());
 app.use(morgan("dev"));
 
+app.use("/", globalRouter);
+app.use("/users",userRouter);
+app.use("/videos",videoRouter);
 
-
-app.get("/", handleHome);
-
-app.get("/profile", handleProfile);
-
-//4000번 포트를 리스닝하고 function 호출해라 
-app.listen(PORT, handleListening);
+export default app;
