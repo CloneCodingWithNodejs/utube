@@ -29,10 +29,10 @@ app.set("view engine", "pug");
 //view directory 설정하고싶으면 
 //app.set("view", "디렉토리경로")
 app.use(cookieParser());
-//form에서 받은 데이터를 서버가 이해해줬음좋겠음 
-app.use(bodyParser.urlencoded({extended:true}));
 //json에 대한 데이터도 서버가 이해해줬음 좋겠음 
 app.use(bodyParser.json());
+//form에서 받은 데이터를 서버가 이해해줬음좋겠음 
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(morgan("dev"));
 
 

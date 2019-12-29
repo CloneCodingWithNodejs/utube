@@ -7,6 +7,7 @@ block content
     .videos
         each potato in videos
             +videoBlock({
+                id : potato.id,
                 title : potato.title,
                 views : potato.views,
                 videoFile : potato.videoFile
