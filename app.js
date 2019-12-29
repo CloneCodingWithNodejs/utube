@@ -14,10 +14,7 @@ import { localMiddleware } from "./middlewares";
 const app = express()
 
 
-const betweenHome = (req, res, next) => {
-    console.log("I'm between");
-    next(); //다음 미들웨어를 호출
-};
+
 
 
 //해당 URL로 접근하면 fucntion 호출함 
@@ -27,10 +24,10 @@ const betweenHome = (req, res, next) => {
 //미들웨어 설정은 순서가 중요함 프로필위에 넣었으면 프로필 접속할때만 미들웨어가 실행됐을거임 
 
 //pug 설정 
+app.use(helmet());
 app.set("view engine", "pug");
 //view directory 설정하고싶으면 
 //app.set("view", "디렉토리경로")
-app.use(helmet());
 app.use(cookieParser());
 //form에서 받은 데이터를 서버가 이해해줬음좋겠음 
 app.use(bodyParser.urlencoded({extended:true}));

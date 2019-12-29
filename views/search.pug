@@ -1,11 +1,11 @@
 extends layouts/main
 include mixins/videoBlock
 
-
-
-block content  
-    .videos
-        each potato in videos
+block content 
+    .search__header
+        h3 Searhching By #{searchingBy}
+    .search__videos
+         each potato in videos
             +videoBlock({
                 title : potato.title,
                 views : potato.views,

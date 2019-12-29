@@ -1,8 +1,29 @@
 
-export const home = (req,res) => res.render("home");
-export const search = (req,res) => res.send("SEARCH");
-export const videos = (req,res) => res.send("VIDEOS");
-export const upload = (req,res) => res.send("UPLOAD");
+import {videos} from "../db";
+
+export const home = (req,res) => {
+
+    
+    res.render("home", {pageTitle: "Home", videos});
+
+};
+
+export const search = (req,res) => {
+   
+    const {query : 
+             {term : searchingBy}    
+          } = req;
+        
+
+    console.log("확인? 1 " + req.query.term);
+    console.log(term);
+    
+    res.render("search",{ pageTitle : "search", searchingBy : searchingBy, videos});
+
+};
+
+
+export const upload = (req,res) => res.render("upload");
 export const videoDetail = (req,res) => res.send("VIDEO DETAIL");
-export const editVideo = (req,res) => res.send("EDIT VIDEO");
+export const editVideo = (req,res) => res.render("editVideo");
 export const deleteVideo = (req,res) => res.send("DELETE VIDEO");
