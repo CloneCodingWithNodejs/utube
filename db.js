@@ -1,8 +1,11 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 //DB가 어디에 연결되어있는지 주소를 입력함 
 mongoose.connect(
-    "mongodb://localhost:27017/utube",
+    process.env.MONGO_URL,
     {
         useNewUrlParser : true,
         useFindAndModify : false
