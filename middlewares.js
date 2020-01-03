@@ -1,4 +1,9 @@
 import routes from "./routes";
+import multer from "multer";
+
+
+ const multerVideo = multer({dest: "uploads/videos/"});
+
 
 export const localMiddleware = (req, res, next) => {
     res.locals.siteName = "Utube";
@@ -10,3 +15,7 @@ export const localMiddleware = (req, res, next) => {
 
     next();
 };
+
+
+                                        //input 태그의 Name
+export const uploadVideo = multerVideo.single("videoFile");

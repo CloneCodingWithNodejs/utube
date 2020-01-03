@@ -9,7 +9,7 @@ import userRouter  from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
 import routes from "./routes"
-import { localMiddleware } from "./middlewares";
+import { localMiddleware  } from "./middlewares";
 
 const app = express()
 
@@ -26,6 +26,10 @@ const app = express()
 //pug 설정 
 app.use(helmet());
 app.set("view engine", "pug");
+
+//비디오 재생 
+app.use("/uploads", express.static("uploads"));
+
 //view directory 설정하고싶으면 
 //app.set("view", "디렉토리경로")
 app.use(cookieParser());

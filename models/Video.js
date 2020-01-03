@@ -6,7 +6,7 @@ const VideoSchema = new mongoose.Schema({
         type : String, 
         required : "파일의 URL이 반드시 필요합니다"
     },
-    tile : {
+    title : {
         type : String,
         required : "제목이 반드시 필요합니다"   
     },
