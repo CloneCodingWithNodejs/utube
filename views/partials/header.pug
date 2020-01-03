@@ -1,11 +1,15 @@
 header.header
-    .header__column
+    .header__column#first
         a(href=routes.home)
             i.fab.fa-youtube
-    .header__column
-        form(action=routes.search,method="get")
-            input(type="text", placeholder="Search by term...", name="term")        
-    .header__column
+            span.title Utube™
+    .header__column#search__div
+        
+            form(action=routes.search,method="get")
+                input(type="text", placeholder="  Search by term...", name="term")
+                button(type="submit")
+                    i.fas.fa-search       
+    .header__column#user__div
         ul
             if !user.isAuthenticated 
                 li  

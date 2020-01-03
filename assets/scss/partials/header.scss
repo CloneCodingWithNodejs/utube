@@ -1,0 +1,89 @@
+.header {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background-attachment: $red;
+  padding: 8px;
+  padding-bottom: 13px;
+  margin-bottom: 15px;
+  background-color: red;
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+#first {
+  grid-column: 1;
+  min-width: 155px;
+}
+
+.fab.fa-youtube {
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 30px;
+}
+
+.fas.fa-search {
+  font-size: 10pt;
+  width: 50px;
+  border-radius: 3px 0 0 3px;
+}
+
+.title {
+  font-size: 22pt;
+  font-weight: bold;
+}
+
+#search__div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: 2/4;
+  margin-top: 5px;
+  min-width: 241px;
+}
+
+#user__div {
+  padding-top: 5px;
+  padding-left: 10px;
+  display: flex;
+  grid-column: 4/6;
+  align-content: center;
+  justify-content: center;
+}
+
+#user__div li {
+  display: inline-block;
+  margin-top: 10px;
+  margin-right: 20px;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+form {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+input {
+  height: 34px;
+  flex: 1;
+  border-style: none;
+  border-radius: 3px 0 0 3px;
+}
+
+button {
+  border: 1px solid gray;
+  border-style: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  #user__div {
+    display: none;
+  }
+
+  #search__div {
+    grid-column: 2/6;
+  }
+}

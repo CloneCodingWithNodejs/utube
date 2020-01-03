@@ -20,7 +20,7 @@ const VIDEOS = "/videos";
 const UPLOAD = "/upload";
 const VIDEO_DETAIL = "/:id"; //:id 같은 경우 Express가 변수라고 알아챔 
 const EDIT_VIDEO = "/:id/edit";
-const DELETE_VIDED ="/:id/delete";
+const DELETE_VIDEO ="/:id/delete";
 
 
 const routes = { 
@@ -48,8 +48,20 @@ const routes = {
             return VIDEO_DETAIL;
         }
     },
-    editVideo : EDIT_VIDEO,
-    deleteVideo : DELETE_VIDED
+    editVideo : (id) => {
+        if(id){
+            return `/videos/${id}/edit`;
+        }else{
+            return EDIT_VIDEO;
+        }
+    },
+    deleteVideo : (id) => {
+        if(id){
+            return `/videos/${id}/delete`;
+        }else{
+            return DELETE_VIDEO;
+        }
+    } 
 };
 
 export default routes;
