@@ -4,8 +4,7 @@
   background-attachment: $red;
   padding: 8px;
   padding-bottom: 13px;
-  margin-bottom: 15px;
-  background-color: red;
+  background-color: $red;
   color: white;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
@@ -56,16 +55,16 @@
   margin-top: 10px;
   margin-right: 20px;
   font-weight: bold;
-  font-size: 12pt;
+  font-size: 16pt;
 }
 
-form {
+#search__div form {
   display: flex;
   justify-content: flex-end;
   flex: 1;
 }
 
-input {
+#search__div form input {
   height: 34px;
   flex: 1;
   border-style: none;

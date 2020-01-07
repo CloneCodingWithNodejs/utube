@@ -1,0 +1,47 @@
+.video-detail__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.video__info {
+  margin-top: 10px;
+}
+
+.video__info button {
+  margin-bottom: 10px;
+  background: $blue;
+  color: white;
+  height: 31px;
+  font-size: 15pt;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.video__info a {
+  padding-right: 468px;
+}
+
+.video__title {
+  font-size: 15pt;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.video__comments {
+  margin-top: 37px;
+}
+
+.video__views {
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.video__description {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.video__comment-number {
+  font-weight: bold;
+}

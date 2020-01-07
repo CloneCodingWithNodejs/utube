@@ -1,0 +1,74 @@
+.flex__div {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+}
+.form__container:nth-child(1) {
+  grid-column: span 1;
+}
+
+#join__form {
+  background: white;
+  border-radius: 30px;
+  padding-top: 15px;
+  padding-bottom: 20px;
+  padding-left: 100px;
+  padding-right: 100px;
+  min-height: 700px;
+  min-width: 400px;
+}
+#join__form form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+#join__form label {
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+#join__form form input {
+  margin-bottom: 20px;
+  height: 40px;
+  padding: 3px;
+  border-radius: 4px;
+  border: 1px solid #d4d4d4;
+}
+
+.social-login {
+  display: inline-block;
+}
+
+#join__now {
+  height: 40px;
+  background-color: $red;
+  color: white;
+  font-weight: bold;
+  font-size: 15pt;
+  font-family: sans-serif;
+  margin-bottom: 5px;
+}
+
+.social-login {
+  display: flex;
+  grid-template-rows: repeat(3, 1fr);
+  flex-direction: rows;
+  align-items: flex-start;
+  padding-top: 10px;
+}
+
+.social-login--github {
+  flex: 1;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.733);
+  color: white;
+}
+.social-login--facebook {
+  flex: 1;
+  height: 40px;
+  background-color: #3b5998;
+  color: white;
+}

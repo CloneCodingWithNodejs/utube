@@ -14,7 +14,6 @@ export const home = async (req, res) => {
       videos
     });
   } catch (error) {
-    console.log(error);
     // 에러가 날 경우 빈 배열을 전송
     res.render("home", { pageTitle: "Home", videos: [] });
   }
@@ -52,8 +51,6 @@ export const postUpload = async (req, res) => {
 
   const newVideo = await Video.create({ fileUrl: path, title, description });
 
-  console.log(newVideo);
-
   // 해야 할일 비디오 업로드 및 저장
   // 업로드가 끝나면 해당 비디오 상세페이지로 이동
   res.redirect(routes.videoDetail(newVideo.id));
@@ -66,7 +63,6 @@ export const videoDetail = async (req, res) => {
 
   try {
     const video = await Video.findById(id);
-    console.log(video);
     res.render("videoDetail", { pageTitle: video.title, video });
   } catch (error) {
     console.log(error);

@@ -2,11 +2,20 @@ extends layouts/main
 
 
 block content 
-    .form-ontainer 
-        form(action=routes.join, method="post")
-            input(type="text", name="name", placeholder="Full Name" required=true)
-            input(type="email",name="email",placeholder="Eamil" required=true)
-            input(type="password",name="password",placeholder="Password" required=true)
-            input(type="password",name="password2",placeholder="Verify Password" required=true)
-            input(type="submit", value="Join Now")
-        include partials/socialLogin
+    .flex__div
+        .form-container
+        .form-container#join__form
+            form(action=routes.join, method="post")
+                label FullName 
+                input(type="text", name="name", placeholder="FullName" required=true)
+                label Email
+                input(type="email",name="email",placeholder="Eamil" required=true)
+                label 비밀번호
+                input(type="password",name="password",placeholder="Password" required=true)
+                label 비밀번호 확인
+                input(type="password",name="password2",placeholder="Verify Password" required=true)
+                button#join__now(type="submit")|Join Now
+            <hr></hr>    
+                include partials/socialLogin    
+        
+        .form-container

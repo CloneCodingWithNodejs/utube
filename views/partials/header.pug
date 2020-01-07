@@ -11,7 +11,7 @@ header.header
                     i.fas.fa-search       
     .header__column#user__div
         ul
-            if !user.isAuthenticated 
+            if !user
                 li  
                     a(href=routes.join) Join
                 li  
