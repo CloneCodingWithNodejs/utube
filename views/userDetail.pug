@@ -2,6 +2,9 @@ extends layouts/main
 
 
 block content
-
-    .container 
-        h1 User Detail
+     .userProfile__header
+        img.avatar(src=loggedUser.avatarUrl)
+     if user.name
+        h4.profile__username=loggedUser.name
+     if !user.name
+        h4.profile__username 이름없음
