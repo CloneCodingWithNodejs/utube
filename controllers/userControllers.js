@@ -18,7 +18,8 @@ export const postJoin = async (req, res, next) => {
     try {
       const user = await User({
         name,
-        email
+        email,
+        avatarUrl: ""
       });
 
       await User.register(user, password);
@@ -155,7 +156,55 @@ export const userDetail = async (req, res) => {
 
 export const users = (req, res) => res.send("USERS");
 
-export const editProfile = (req, res) =>
+export const geteditProfile = (req, res) =>
   res.render("editProfile", { pageTitle: "Edit Profile" });
-export const changePassword = (req, res) =>
+
+export const postEditProfile = async (req, res) => {
+  const {
+    body: { name, email },
+    file
+  } = req;
+
+  try {
+    //브라우저에서 서버값을 바로 반영못하는 이슈가있음
+
+    // await User.findByIdAndUpdate(req.user._id, {
+    //   name,
+    //   email,
+    //   avatarUrl: file ? file.path : req.user.avatarUrl
+    // });
+
+    req.user.name = name;
+    req.user.email = email;
+    req.user.avatarUrl = file ? file.path : req.user.avatarUrl;
+    req.user.save();
+
+    res.redirect(routes.myProfile);
+  } catch (error) {
+    console.log(error);
+    res.render("editProfile", { pageTitle: "Edit Profile" });
+  }
+};
+
+export const getChangePassword = (req, res) =>
   res.render("changePassword", { pageTitle: "Change Password" });
+
+export const postChangePassword = async (req, res) => {
+  const {
+    body: { oldPassword, newPassword, newPassword1 }
+  } = req;
+
+  try {
+    if (newPassword !== newPassword1) {
+      res.status(400);
+      res.redirect(`/users${routes.changePassword}`);
+    }
+
+    await req.user.changePassword(oldPassword, newPassword);
+
+    res.redirect(routes.myProfile);
+  } catch (error) {
+    console.log("비밀번호 변경 에러" + error);
+    res.redirect(`/users${routes.changePassword}`);
+  }
+};

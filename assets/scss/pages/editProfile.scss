@@ -1,0 +1,45 @@
+.flex__div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.form-container:nth-child(1) {
+  grid-column: span 1;
+}
+
+.form-container:nth-child(2) {
+  grid-column: span 1;
+  display: flex;
+
+  span {
+    margin: 0;
+    font-size: 15pt;
+  }
+
+  .photo {
+    background: white;
+    padding-top: 8px;
+  }
+
+  input {
+    height: 40px;
+    box-shadow: 3px 3px 5px 1px gray;
+    padding-left: 5px;
+    border-radius: 5px;
+  }
+}
+
+.form-container__link {
+  background: #1c7ed6;
+  color: white;
+  font-size: 15pt;
+  font-weight: bold;
+  cursor: pointer;
+  flex: 1;
+  height: 55px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px 1px gray;
+}
