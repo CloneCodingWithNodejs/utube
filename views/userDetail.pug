@@ -1,4 +1,5 @@
 extends layouts/main
+include mixins/videoBlock
 
 
 block content
@@ -6,7 +7,7 @@ block content
       .userProfile 
       .userProfile
          if user.avatarUrl !== ""
-            img.avatar(src=user.avatarUrl)
+            img.avatar(src=`/${user.avatarUrl}`)
          if user.avatarUrl === ""
             img.avatar(src="uploads/avatars/no-image-icon-23479.png")   
          if user.name
@@ -18,4 +19,12 @@ block content
                a(href=`/users${routes.editProfile}`) ✍️Edit profile
             button.changePW__btn 
                a(href=`/users${routes.changePassword}`) 🔏Change PassWord
+   .uploadedVideo__flex__div            
       .userProfile
+         each potato in user.videos
+               +videoBlock({
+                  id : potato.id,
+                  title : potato.title,
+                  views : potato.views,
+                  fileUrl : potato.fileUrl
+               })

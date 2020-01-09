@@ -48,9 +48,10 @@ export const logout = (req, res) => {
   res.redirect(routes.home);
 };
 
-//깃허브 login
+//깃허브 로그인
 export const githubLogin = passport.authenticate("github");
 
+//깃허브 로그인 콜백
 export const githubLoginCallback = async (
   accessToken,
   refreshToken,
@@ -140,13 +141,14 @@ export const myProfile = (req, res) => {
   res.render("userDetail", { pageTitle: "User Detail", user: req.user });
 };
 
+//사용자 상세보기
 export const userDetail = async (req, res) => {
   const {
     params: { id }
   } = req;
 
   try {
-    const user = await User.findById(id);
+    const user = await User.findById(id).populate("videos");
 
     res.render("userDetail", { pageTitle: "User Detail", user });
   } catch (error) {
@@ -156,9 +158,11 @@ export const userDetail = async (req, res) => {
 
 export const users = (req, res) => res.send("USERS");
 
+//프로필 수정 폼
 export const geteditProfile = (req, res) =>
   res.render("editProfile", { pageTitle: "Edit Profile" });
 
+//프로필 수정
 export const postEditProfile = async (req, res) => {
   const {
     body: { name, email },
@@ -166,18 +170,14 @@ export const postEditProfile = async (req, res) => {
   } = req;
 
   try {
-    //브라우저에서 서버값을 바로 반영못하는 이슈가있음
+    const updateUser = await User.findByIdAndUpdate(req.user.id, {
+      name,
+      email,
+      avatarUrl: file ? file.path : req.user.avatarUrl
+    });
 
-    // await User.findByIdAndUpdate(req.user._id, {
-    //   name,
-    //   email,
-    //   avatarUrl: file ? file.path : req.user.avatarUrl
-    // });
-
-    req.user.name = name;
-    req.user.email = email;
-    req.user.avatarUrl = file ? file.path : req.user.avatarUrl;
-    req.user.save();
+    //이거 까먹지 말고 꼭 해줘라
+    updateUser.save();
 
     res.redirect(routes.myProfile);
   } catch (error) {

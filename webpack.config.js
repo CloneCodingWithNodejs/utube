@@ -42,6 +42,10 @@ const config = {
             loader: "sass-loader" //sass를 css로 변환
           }
         ])
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: "url-loader?limit=100000"
       }
     ]
   },

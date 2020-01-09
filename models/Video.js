@@ -26,7 +26,11 @@ const VideoSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Comment"
     }
-  ]
+  ],
+  creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }
 });
 //매개변수 1 :  모델의 이름, 2 : 사용할 스키마
 const model = mongoose.model("Video", VideoSchema);
