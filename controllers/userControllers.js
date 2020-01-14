@@ -137,8 +137,9 @@ export const postGithubLogin = (req, res) => {
   res.redirect(routes.home);
 };
 
+//내 정보 페이지
 export const myProfile = (req, res) => {
-  res.render("userDetail", { pageTitle: "User Detail", user: req.user });
+  res.render("myProfile", { pageTitle: "User Detail", user: req.user });
 };
 
 //사용자 상세보기

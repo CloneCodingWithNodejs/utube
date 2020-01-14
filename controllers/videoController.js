@@ -1,5 +1,6 @@
 import routes from "../routes";
 import Video from "../models/Video";
+import User from "../models/User";
 
 //홈 화면
 export const home = async (req, res) => {
@@ -128,16 +129,29 @@ export const deleteVideo = async (req, res) => {
 
   try {
     const video = await Video.findById(id);
+
     if (video.creator != req.user.id) {
       throw Error();
     } else {
-      await Video.findByIdAndRemove(id);
+      await Video.findByIdAndRemove({ _id: id });
+      const findUser = await User.findByIdAndUpdate(req.user.id, {
+        $pull: { videos: id }
+      });
+
+      const fs = require("fs");
+
+      fs.unlink(video.fileUrl, err => {
+        console.log(video.fileUrl);
+        console.log("파일삭제 실패");
+        console.log(err);
+        res.redirect(routes.home);
+      });
+
+      findUser.save();
     }
   } catch (error) {
     console.log(error);
   }
 
   res.redirect(routes.home);
-
-  res.send("DELETE VIDEO");
 };

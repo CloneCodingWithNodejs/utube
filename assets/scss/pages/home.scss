@@ -1,7 +1,10 @@
+@import "../font.scss";
+
 .home-videos {
   display: grid;
   grid-template-columns: repeat(6, minmax(130px, 1fr));
   grid-gap: 30px;
+  flex-direction: row;
 
   .videoBlock:first-child,
   .videoBlock:nth-child(2) {
@@ -12,11 +15,29 @@
   .videoBlock:nth-child(5) {
     grid-column: span 2;
   }
+
   .videoBlock {
     justify-self: center;
     align-self: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    .videoBlock__title {
+      font-family: "baemin";
+      font-size: 15pt;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      margin-left: 10px;
+    }
+
+    .videoBlock__views {
+      font-family: "baemin";
+      font-size: 12pt;
+    }
   }
-  .videoBlock video {
-    flex: 1 100%;
+
+  video {
+    width: 250px;
+    height: 250px;
   }
 }

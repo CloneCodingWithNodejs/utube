@@ -37,7 +37,31 @@
 
 .uploadedVideo__flex__div {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   margin-top: 15px;
   padding: 10px;
+  text-align: center;
+  flex-direction: row;
+
+  .videoBlock:first-child,
+  .videoBlock:nth-child(2) {
+    grid-column: span 3;
+  }
+  .videoBlock:nth-child(3),
+  .videoBlock:nth-child(4),
+  .videoBlock:nth-child(5) {
+    grid-column: span 2;
+  }
+  .videoBlock {
+    justify-self: center;
+    align-self: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  video {
+    height: 60%;
+    width: 60%;
+    display: inline-block;
+  }
 }

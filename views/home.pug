@@ -1,12 +1,13 @@
 extends layouts/main
 include mixins/videoBlock
+include mixins/videoDetailBlock
 
 
 
 block content  
     .home-videos
         each potato in videos
-            +videoBlock({
+            +videoDetailBlock({
                 id : potato.id,
                 title : potato.title,
                 views : potato.views,

@@ -132,6 +132,10 @@ input {
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: none;
+}
+
 input {
   border: none;
   box-sizing: border-box;

@@ -20,11 +20,4 @@ block content
                a(href=`/users${routes.editProfile}`) ✍️Edit profile
             button.changePW__btn 
                a(href=`/users${routes.changePassword}`) 🔏Change PassWord
-   .uploadedVideo__flex__div            
-         each potato in user.videos
-               +videoDetailBlock({
-                  id : potato.id,
-                  title : potato.title,
-                  views : potato.views,
-                  fileUrl : potato.fileUrl
-               })
+   
