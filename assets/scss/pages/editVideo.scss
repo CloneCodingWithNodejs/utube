@@ -1,14 +1,14 @@
 .flex__div {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(6, 1fr) !important;
 }
 
 .form-container:nth-child(1) {
-  grid-column: span 2;
+  grid-column: span 1;
 }
 
 .form-container:nth-child(2) {
-  grid-column: span 3;
+  grid-column: span 4 !important;
   height: 500px;
   flex-direction: column;
   align-content: center;
@@ -20,7 +20,7 @@
 
     * {
       margin-top: 15px;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
     }
 
     input[type="text"] {

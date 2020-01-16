@@ -1,0 +1,51 @@
+.flex__div__upload {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  .form-container:nth-child(2) {
+    grid-column: span 2 !important;
+    padding-top: 0px !important;
+  }
+
+  .record-container {
+    video {
+      background-color: black;
+      margin-bottom: 15px;
+      width: 100%;
+    }
+
+    text-align: center;
+    #jsRecordButton {
+      background: #1c7ed6;
+      color: white;
+      font-size: 15pt;
+      font-weight: bold;
+      cursor: pointer;
+      height: 43px;
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: 3px 3px 5px 1px grey;
+    }
+  }
+
+  label {
+    cursor: pointer;
+    margin-bottom: 0px !important;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .flex__div__upload {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    .form-container:nth-child(2) {
+      grid-column: span 1 !important;
+      padding-top: 0px !important;
+    }
+  }
+}

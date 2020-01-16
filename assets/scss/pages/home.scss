@@ -2,25 +2,22 @@
 
 .home-videos {
   display: grid;
-  grid-template-columns: repeat(6, minmax(130px, 1fr));
+  grid-template-columns: repeat(6, 1fr);
   grid-gap: 30px;
   flex-direction: row;
 
-  .videoBlock:first-child,
-  .videoBlock:nth-child(2) {
-    grid-column: span 3;
-  }
-  .videoBlock:nth-child(3),
-  .videoBlock:nth-child(4),
-  .videoBlock:nth-child(5) {
-    grid-column: span 2;
-  }
-
   .videoBlock {
+    grid-column: span 2;
     justify-self: center;
     align-self: center;
     margin-top: 10px;
     margin-bottom: 10px;
+
+    .videoBlock__thumbnail {
+      margin: 1 auto;
+      width: 450px;
+      height: 250px;
+    }
 
     .videoBlock__title {
       font-family: "baemin";
@@ -35,9 +32,16 @@
       font-size: 12pt;
     }
   }
+}
 
-  video {
-    width: 250px;
-    height: 250px;
+@media screen and (max-width: 1400px) {
+  .videoBlock {
+    grid-column: span 3 !important;
+  }
+}
+
+@media screen and (max-width: 1028px) {
+  .videoBlock {
+    grid-column: span 6 !important;
   }
 }

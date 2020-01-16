@@ -9,6 +9,17 @@ const totalTime = document.getElementById("totalTime");
 const juice = document.getElementById("juice");
 const progressBar = document.getElementById("progress__bar");
 
+//데이터베이스 조회만할 경우 get
+//데이터베이스를 수정할 경우에는 post 사용하면됨
+const registerView = () => {
+  //비디오 ID 따오기
+  const videoId = window.location.href.split("/videos/")[1];
+
+  fetch(`/api/${videoId}/view`, {
+    method: "POST"
+  });
+};
+
 const getCurrentTime = () => {
   currentTime.innerHTML = formatDate(videoPlayer.currentTime);
 };
@@ -132,10 +143,11 @@ const handleEsc = event => {
   }
 };
 
-//비디오가 끝날때
+//비디오가 끝날때 조회수 1증가
 const handleEnded = () => {
   videoPlayer.currentTime = 0;
   playBtn.innerHTML = '<i class="fas fa-play"></i>';
+  registerView();
 };
 
 //볼륨 바 마우스 오버

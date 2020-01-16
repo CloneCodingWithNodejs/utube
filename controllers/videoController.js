@@ -1,6 +1,7 @@
 import routes from "../routes";
 import Video from "../models/Video";
 import User from "../models/User";
+import Comment from "../models/Comment";
 
 //홈 화면
 export const home = async (req, res) => {
@@ -76,7 +77,19 @@ export const videoDetail = async (req, res) => {
   } = req;
 
   try {
-    const video = await Video.findById(id).populate("creator");
+    const video = await Video.findById(id)
+      .populate("creator")
+      .populate({
+        path: "comments",
+        populate: { path: "creator" }
+      });
+
+    // for (const comment of video.comments) {
+    //   console.log(comment.creator);
+    //   const newComment = await Comment.findById(comment.creator);
+
+    // }
+
     res.render("videoDetail", { pageTitle: video.title, video });
   } catch (error) {
     console.log(error);
@@ -154,4 +167,62 @@ export const deleteVideo = async (req, res) => {
   }
 
   res.redirect(routes.home);
+};
+
+//조회수 1증가
+export const postRegisterView = async (req, res) => {
+  const {
+    params: { id }
+  } = req;
+
+  try {
+    const video = await Video.findById(id);
+    video.views += 1;
+    video.save();
+    res.status(200);
+  } catch (error) {
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+//비디오 댓글 추가
+
+export const postAddComment = async (req, res) => {
+  const {
+    body: { comment },
+    params: { id },
+    user
+  } = req;
+
+  try {
+    const video = await Video.findById(id);
+
+    //새로운 댓글 생성
+    const newComment = await Comment.create({
+      text: comment,
+      creator: user.id
+    });
+
+    //비디오가 갖고있는 댓글 배열에 새로운 댓글 추가
+    video.comments.push(newComment._id);
+    video.save();
+  } catch (error) {
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+//비디오 댓글 삭제
+
+export const postDeleteComment = async (req, res) => {
+  console.log("요청옴");
+
+  const {
+    body: { commentId }
+  } = req;
+
+  console.log(commentId);
 };

@@ -2,10 +2,17 @@ extends layouts/main
 
 
 block content 
-    .form-container
-        form(action=`/videos${routes.upload}`, method="post", enctype="multipart/form-data")
-            label(for="file") Video File
-            input(type="file", id="file", name="videoFile", requird=true, accept="video/*")
-            input(type="text", placehoelder="Title", name="title", required=true)
-            textarea(name="description", placeholder="Description", required=true)
-            input(type="submit", value="Upload Video", required=true)
+    .flex__div__upload
+        .form-container
+        .form-container
+            .record-container#jsRecordContainer  
+                video#jsVideoPreview
+                button#jsRecordButton Start Recording
+            form(action=`/videos${routes.upload}`, method="post", enctype="multipart/form-data")
+                label.custom-file-upload(for="file")
+                    i.fa.fa-cloud-upload Upload Video
+                input(type="file", id="file", name="videoFile", requird=true, accept="video/*")
+                input(type="text", placeholder="Title", name="title", required=true)
+                textarea(name="description", placeholder="Description", required=true)
+                input(type="submit", value="Upload Video", required=true)
+        .form-container
