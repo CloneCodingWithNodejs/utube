@@ -1,4 +1,5 @@
 import passport from "passport";
+import dotenv from "dotenv";
 import User from "./models/User";
 import facebookStrategy from "passport-facebook";
 import githubStrategy from "passport-github";
@@ -7,6 +8,8 @@ import {
   facebookLoginCallback
 } from "./controllers/userControllers";
 import routes from "./routes";
+
+dotenv.config();
 
 //로그인하는 방식을 하나 설정
 passport.use(User.createStrategy());
