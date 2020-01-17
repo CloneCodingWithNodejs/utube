@@ -5,7 +5,7 @@ dotenv.config();
 
 //DB가 어디에 연결되어있는지 주소를 입력함
 mongoose.connect(
-  process.env.PRODCUTION
+  process.env.PRODUCTION
     ? process.env.MONGO_URL_PRODUCT
     : process.env.MONGO_URL,
   {
