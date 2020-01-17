@@ -13,6 +13,8 @@ var _User = _interopRequireDefault(require("../models/User"));
 
 var _Comment = _interopRequireDefault(require("../models/Comment"));
 
+var _awsSdk = _interopRequireDefault(require("aws-sdk"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -33,7 +35,7 @@ function () {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return _Video["default"].find({}).sort({
+            return _Video["default"].find({}).populate("creator").sort({
               _id: -1
             });
 
@@ -347,7 +349,7 @@ function () {
   var _ref7 = _asyncToGenerator(
   /*#__PURE__*/
   regeneratorRuntime.mark(function _callee7(req, res) {
-    var id, video, findUser, fs;
+    var id, video, s3path, findUser, s3, params;
     return regeneratorRuntime.wrap(function _callee7$(_context7) {
       while (1) {
         switch (_context7.prev = _context7.next) {
@@ -359,57 +361,63 @@ function () {
 
           case 4:
             video = _context7.sent;
+            s3path = video.fileUrl.split("/video/")[1];
 
             if (!(video.creator != req.user.id)) {
-              _context7.next = 9;
+              _context7.next = 10;
               break;
             }
 
             throw Error();
 
-          case 9:
-            _context7.next = 11;
+          case 10:
+            _context7.next = 12;
             return _Video["default"].findByIdAndRemove({
               _id: id
             });
 
-          case 11:
-            _context7.next = 13;
+          case 12:
+            _context7.next = 14;
             return _User["default"].findByIdAndUpdate(req.user.id, {
               $pull: {
                 videos: id
               }
             });
 
-          case 13:
+          case 14:
             findUser = _context7.sent;
-            fs = require("fs");
-            fs.unlink(video.fileUrl, function (err) {
-              console.log(video.fileUrl);
-              console.log("파일삭제 실패");
-              console.log(err);
-              res.redirect(_routes["default"].home);
+            s3 = new _awsSdk["default"].S3({
+              secretAccessKey: process.env.AWS_SECRET,
+              accessKeyId: process.env.AWS_ACCESSKEY
+            });
+            console.log("key : ".concat(s3path));
+            params = {
+              Bucket: "utube-com",
+              Key: "video/".concat(s3path)
+            };
+            s3.deleteObject(params, function (err, data) {
+              if (err) console.log(err, err.stack);else console.log("파일삭제 성공");
             });
             findUser.save();
 
-          case 17:
-            _context7.next = 22;
+          case 20:
+            _context7.next = 25;
             break;
 
-          case 19:
-            _context7.prev = 19;
+          case 22:
+            _context7.prev = 22;
             _context7.t0 = _context7["catch"](1);
             console.log(_context7.t0);
 
-          case 22:
+          case 25:
             res.redirect(_routes["default"].home);
 
-          case 23:
+          case 26:
           case "end":
             return _context7.stop();
         }
       }
-    }, _callee7, null, [[1, 19]]);
+    }, _callee7, null, [[1, 22]]);
   }));
 
   return function deleteVideo(_x13, _x14) {

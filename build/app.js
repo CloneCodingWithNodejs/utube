@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-require("@babel/polyfill");
+var _path = _interopRequireDefault(require("path"));
 
 var _express = _interopRequireDefault(require("express"));
 
@@ -53,11 +53,12 @@ var cookieStore = (0, _connectMongo["default"])(_expressSession["default"]); //�
 app.use((0, _helmet["default"])()); //view directory 설정하고싶으면
 //app.set("view", "디렉토리경로")
 
-app.set("view engine", "pug"); //비디오 재생
+app.set("view engine", "pug");
+app.set("views", _path["default"].join(__dirname, "views")); //비디오 재생
 
 app.use("/uploads", _express["default"]["static"]("uploads")); //webpack에서 사용할 정적 파일 불러옴
 
-app.use("/static", _express["default"]["static"]("static"));
+app.use("/static", _express["default"]["static"](_path["default"].join(__dirname, "static")));
 app.use((0, _cookieParser["default"])()); //json에 대한 데이터도 서버가 이해해줬음 좋겠음
 
 app.use(_bodyParser["default"].json()); //form에서 받은 데이터를 서버가 이해해줬음좋겠음

@@ -2,6 +2,8 @@
 
 var _dotenv = _interopRequireDefault(require("dotenv"));
 
+require("@babel/polyfill");
+
 require("./db");
 
 var _app = _interopRequireDefault(require("./app"));

@@ -11,9 +11,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var addCommentForm = document.getElementById("jsAddComment");
 var commentList = document.getElementById("jsCommentList");
 var commentNumber = document.getElementById("jsCommentNumber");
-var avatarUrl = document.getElementById("jsCommentUrl").value;
-var userId = document.getElementById("jsUserId").value;
-var userName = document.getElementById("jsUserName").value;
+var avatarUrl = document.getElementById("jsCommentUrl");
+var userId = document.getElementById("jsUserId");
+var userName = document.getElementById("jsUserName");
 var toggleBtn = document.getElementsByClassName("fas fa-ellipsis-h");
 var deleteBtn = document.getElementsByClassName("fas fa-trash");
 var updateBtn = document.getElementsByClassName("fas fa-pen-square");
@@ -29,11 +29,11 @@ var addComment = function addComment(comment) {
   spanDate.innerHTML = Date().substr(4, 11);
   var span = document.createElement("span"); //이미지태그
 
-  avatar.src = avatarUrl; //유저 상세보기 링크
+  avatar.src = avatarUrl.value; //유저 상세보기 링크
 
   var a = document.createElement("a");
-  a.href = "/users/".concat(userId);
-  a.text = userName;
+  a.href = "/users/".concat(userId.value);
+  a.text = userName.value;
   span.innerHTML = comment;
   li.classList.add("comment__box");
   avatar.classList.add("comment__avatar");

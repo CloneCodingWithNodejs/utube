@@ -7,3 +7,5 @@ require("./videoPlayer");
 require("./videoRecoder");
 
 require("./addComment");
+
+require("./upload");
