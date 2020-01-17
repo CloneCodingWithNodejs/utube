@@ -8,6 +8,7 @@ const currentTime = document.getElementById("currentTime");
 const totalTime = document.getElementById("totalTime");
 const juice = document.getElementById("juice");
 const progressBar = document.getElementById("progress__bar");
+const videoControls = document.getElementsByClassName("videoPlayer__controls");
 
 //데이터베이스 조회만할 경우 get
 //데이터베이스를 수정할 경우에는 post 사용하면됨
@@ -186,9 +187,7 @@ const init = () => {
   videoPlayer.addEventListener("ended", handleEnded);
   videoPlayer.addEventListener("click", handlePlayClick);
   videoPlayer.addEventListener("timeupdate", handleTimeUpdate);
-  videoPlayer.onloadeddata = () => {
-    setTotalTime();
-  };
+  videoPlayer.addEventListener("loadeddata", setTotalTime);
 
   volumeRange.addEventListener("input", handleDrag);
 

@@ -2,6 +2,7 @@
   position: relative;
   text-align: center;
   display: flex;
+  background-color: black;
 
   &:hover {
     .videoPlayer__controls {
@@ -16,7 +17,7 @@
 
   video {
     margin: 0 auto;
-    width: 100%;
+    max-width: 1024px;
   }
   .videoPlayer__controls {
     opacity: 0;

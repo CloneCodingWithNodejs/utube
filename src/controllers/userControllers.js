@@ -19,7 +19,8 @@ export const postJoin = async (req, res, next) => {
       const user = await User({
         name,
         email,
-        avatarUrl: ""
+        avatarUrl:
+          "https://utube-com.s3.ap-northeast-2.amazonaws.com/avatar/4787416a153dafef34097ad9166b1178"
       });
 
       await User.register(user, password);
