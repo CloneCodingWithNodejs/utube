@@ -16,7 +16,9 @@ passport.use(
     {
       clientID: process.env.GH_ID,
       clientSecret: process.env.GH_SECRET,
-      callbackURL: `http://localhost:4000${routes.githubCallback}`
+      callbackURL: process.env.PRODUCTCTION
+        ? `https://limitless-thicket-99758.herokuapp.com${routes.githubCallback}`
+        : `http://localhost:4000${routes.githubCallback}`
     },
     githubLoginCallback //이 함수에서 유저를 찾거나 생성하면됨
   )
@@ -27,7 +29,7 @@ passport.use(
     {
       clientID: process.env.FB_ID,
       clientSecret: process.env.FB_SECRET,
-      callbackURL: `https://03709242.ngrok.io${routes.facebookCallback}`,
+      callbackURL: `https://limitless-thicket-99758.herokuapp.com${routes.facebookCallback}`,
       profileFields: ["id", "displayName", "photos", "email"],
       scope: ["public_profile", "email"]
     },
