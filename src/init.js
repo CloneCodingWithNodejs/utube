@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import "@babel/polyfill";
 import "./db";
 import app from "./app";
 import "./models/Video";

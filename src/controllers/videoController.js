@@ -2,16 +2,18 @@ import routes from "../routes";
 import Video from "../models/Video";
 import User from "../models/User";
 import Comment from "../models/Comment";
+import aws from "aws-sdk";
 
 //홈 화면
 export const home = async (req, res) => {
   try {
     // DB에 있는 모든 비디오를 가져와라 , 최신순으로 가져오기 sort()
     // -1을 줄 경우 reverse 하겠다는 예약어임
-    const videos = await Video.find({}).sort({
-      _id: -1
-    });
-
+    const videos = await Video.find({})
+      .populate("creator")
+      .sort({
+        _id: -1
+      });
     res.render("home", {
       pageTitle: "Home",
       videos
@@ -143,6 +145,8 @@ export const deleteVideo = async (req, res) => {
   try {
     const video = await Video.findById(id);
 
+    const s3path = video.fileUrl.split("/video/")[1];
+
     if (video.creator != req.user.id) {
       throw Error();
     } else {
@@ -151,13 +155,21 @@ export const deleteVideo = async (req, res) => {
         $pull: { videos: id }
       });
 
-      const fs = require("fs");
+      const s3 = new aws.S3({
+        secretAccessKey: process.env.AWS_SECRET,
+        accessKeyId: process.env.AWS_ACCESSKEY
+      });
 
-      fs.unlink(video.fileUrl, err => {
-        console.log(video.fileUrl);
-        console.log("파일삭제 실패");
-        console.log(err);
-        res.redirect(routes.home);
+      console.log(`key : ${s3path}`);
+
+      const params = {
+        Bucket: "utube-com",
+        Key: `video/${s3path}`
+      };
+
+      s3.deleteObject(params, (err, data) => {
+        if (err) console.log(err, err.stack);
+        else console.log("파일삭제 성공");
       });
 
       findUser.save();

@@ -38,6 +38,25 @@
   }
 }
 
+#loadingScreen {
+  background: black;
+  opacity: 0.7;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 300;
+  display: none;
+  text-align: center;
+
+  img {
+    width: 100px;
+    height: 100px;
+    margin-top: 35%;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .flex__div__upload {
     display: grid;
@@ -48,4 +67,8 @@
       padding-top: 0px !important;
     }
   }
+}
+
+#file__div {
+  font-size: 13pt;
 }

@@ -3,9 +3,9 @@ import axios from "axios";
 const addCommentForm = document.getElementById("jsAddComment");
 const commentList = document.getElementById("jsCommentList");
 const commentNumber = document.getElementById("jsCommentNumber");
-const avatarUrl = document.getElementById("jsCommentUrl").value;
-const userId = document.getElementById("jsUserId").value;
-const userName = document.getElementById("jsUserName").value;
+const avatarUrl = document.getElementById("jsCommentUrl");
+const userId = document.getElementById("jsUserId");
+const userName = document.getElementById("jsUserName");
 const toggleBtn = document.getElementsByClassName("fas fa-ellipsis-h");
 const deleteBtn = document.getElementsByClassName("fas fa-trash");
 const updateBtn = document.getElementsByClassName("fas fa-pen-square");
@@ -24,12 +24,12 @@ const addComment = comment => {
   const span = document.createElement("span");
 
   //이미지태그
-  avatar.src = avatarUrl;
+  avatar.src = avatarUrl.value;
 
   //유저 상세보기 링크
   const a = document.createElement("a");
-  a.href = `/users/${userId}`;
-  a.text = userName;
+  a.href = `/users/${userId.value}`;
+  a.text = userName.value;
 
   span.innerHTML = comment;
   li.classList.add("comment__box");

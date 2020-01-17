@@ -24,12 +24,12 @@ block content
             else 
                 span.video__comment-number#jsCommentNumber=video.comments.length
                 |      comments
-            if loggedUser
-                form.add__comments#jsAddComment
-                    input#jsComment(type="text", placeholder="Add Comment" name="comment")
-                    input#jsCommentUrl(type="hidden" name="commentUrl" value=loggedUser.avatarUrl) 
-                    input#jsUserId(type="hidden" name="userId" value=loggedUser.id)
-                    input#jsUserName(type="hidden" name="userName" value=loggedUser.name)
+        if loggedUser
+            form.add__comments#jsAddComment
+                input#jsComment(type="text", placeholder="Add Comment" name="comment")
+                input#jsCommentUrl(type="hidden" name="commentUrl" value=loggedUser.avatarUrl) 
+                input#jsUserId(type="hidden" name="userId" value=loggedUser.id)
+                input#jsUserName(type="hidden" name="userName" value=loggedUser.name)
             ul.video__comments-list#jsCommentList
                 each comment in video.comments.reverse()
                     li.comment__box

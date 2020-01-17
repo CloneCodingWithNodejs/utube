@@ -3,6 +3,12 @@ mixin videoDetailBlock(video = {})
        
         a(href=routes.videoDetail(video.id))
             video.videoBlock__thumbnail(src=`${video.fileUrl}`, controls)
-            h4.videoBlock__title=video.title
-            h6.videoBlock__views=video.views
+            .didi
+                div
+                    img.avatar(src=video.avatarUrl)
+                div
+                    p.videoBlock__title=video.title
+                    a.user__detail(href=routes.userDetail(video.creatorId))=video.creatorName
+                    h4.videoBlock__views=video.views 
+                        span view
         

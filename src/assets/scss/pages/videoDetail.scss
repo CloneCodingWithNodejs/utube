@@ -28,6 +28,8 @@
   font-size: 15pt;
   font-weight: bold;
   margin-bottom: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .video__comments {
@@ -43,6 +45,9 @@
   margin-top: 15px;
   font-weight: bold;
   margin-bottom: 10px;
+  white-space: pre;
+  line-height: 1.5em;
+  font-size: 15pt;
 }
 
 .video__userDetail {
