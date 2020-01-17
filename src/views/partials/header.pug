@@ -1,0 +1,25 @@
+header.header
+    .header__column#first
+        a(href=routes.home)
+            i.fab.fa-youtube
+            span.title Utube™
+    .header__column#search__div
+        
+            form(action=routes.search,method="get")
+                input(type="text", placeholder="  Search by term...", name="term")
+                button(type="submit")
+                    i.fas.fa-search       
+    .header__column#user__div
+        ul
+            if !loggedUser
+                li  
+                    a(href=routes.join) Join
+                li  
+                    a(href=routes.login) Log in         
+            else
+                li
+                    a(href=`/videos${routes.upload}`) Upload
+                li
+                    a(href=routes.myProfile) Profile
+                li
+                    a(href=routes.logout) Log Out

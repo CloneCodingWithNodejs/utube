@@ -1,0 +1,23 @@
+extends layouts/main
+include mixins/videoDetailBlock
+include mixins/videoPlayer
+
+
+block content
+   .userDetail__flex__div
+      .userProfile 
+      .userProfile
+         if user.avatarUrl !== ""
+            img.avatar(src=user.avatarUrl)
+         if user.avatarUrl === ""
+            img.avatar(src="uploads/avatars/no-image-icon-23479.png")   
+         if user.name
+            h4.profile__username=user.name
+         if !user.name
+            h4.profile__username 이름없음
+         if user.id === loggedUser.id      
+            button.editprofile__btn 
+               a(href=`/users${routes.editProfile}`) ✍️Edit profile
+            button.changePW__btn 
+               a(href=`/users${routes.changePassword}`) 🔏Change PassWord
+   

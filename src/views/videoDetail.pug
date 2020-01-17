@@ -1,0 +1,57 @@
+extends layouts/main
+include mixins/videoPlayer
+
+block content
+    .video-detail__container
+        +videoPlayer({
+            fileUrl : video.fileUrl
+        })
+        .video__info
+            if loggedUser
+                if video.creator.id === loggedUser.id
+                    a(href=routes.editVideo(video.id)) 
+                        button Edit Video
+            h5.video__title=video.title
+            span.video__views  조회수 : #{video.views}
+            p.video__description=video.description
+            span.video__userDetail
+                |작성자  
+                a(href=routes.userDetail(video.creator.id))=video.creator.name
+            .video__comments
+            if video.comments.length === 1 
+                span.video__comment-number#jsCommentNumber
+                    span 1 |comment 
+            else 
+                span.video__comment-number#jsCommentNumber=video.comments.length
+                |      comments
+            if loggedUser
+                form.add__comments#jsAddComment
+                    input#jsComment(type="text", placeholder="Add Comment" name="comment")
+                    input#jsCommentUrl(type="hidden" name="commentUrl" value=loggedUser.avatarUrl) 
+                    input#jsUserId(type="hidden" name="userId" value=loggedUser.id)
+                    input#jsUserName(type="hidden" name="userName" value=loggedUser.name)
+            ul.video__comments-list#jsCommentList
+                each comment in video.comments.reverse()
+                    li.comment__box
+                        if loggedUser && comment.creator._id == loggedUser.id
+                            i.fas.fa-ellipsis-h
+                            .modify__select
+                                i.fas.fa-pen-square 수정
+                                    input(type="hidden" value=comment.id)
+                                i.fas.fa-trash 삭제 
+                                    input(type="hidden" value=comment.id)
+                        div
+                            img.comment__avatar(src=comment.creator.avatarUrl)
+                        div.info__div    
+                            a(href=routes.userDetail(comment.creator._id))=video.creator.name
+                            span.comment__date= comment.createdAt.toString().substr(4,11) 
+                            br
+                            form.update__form
+                                div.comment__text= comment.text
+                                input(type="hidden" value=comment.id)
+                           
+                            
+        
+         
+            
+
