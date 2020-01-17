@@ -8,6 +8,9 @@ const userId = document.getElementById("jsUserId").value;
 const userName = document.getElementById("jsUserName").value;
 const toggleBtn = document.getElementsByClassName("fas fa-ellipsis-h");
 const deleteBtn = document.getElementsByClassName("fas fa-trash");
+const updateBtn = document.getElementsByClassName("fas fa-pen-square");
+const updateForm = document.getElementsByClassName("update__form");
+const commentText = document.getElementsByClassName("comment__text");
 
 const addComment = comment => {
   //Input hidden의 값 받기
@@ -86,6 +89,69 @@ const handleToggle = e => {
   }
 };
 
+const handleUpdate = e => {
+  let i;
+
+  for (i = 0; i < deleteBtn.length; i++) {
+    if (e.target === updateBtn[i]) {
+      console.log(i);
+      break;
+    }
+  }
+  const input = document.createElement("input");
+  input.setAttribute("id", "updateInput");
+
+  //   var list = document.getElementById("myList");   // Get the <ul> element with id="myList"
+  // list.removeChild(list.childNodes[0]);
+  updateForm[i].removeChild(commentText[i]);
+
+  updateForm[i].appendChild(input);
+};
+
+const updateComment = e => {
+  e.preventDefault();
+
+  console.log("동작됨");
+
+  let i;
+
+  for (i = 0; i < updateForm.length; i++) {
+    if (e.target === updateForm[i]) {
+      console.log(i);
+      break;
+    }
+  }
+  const c = updateForm[i].childNodes;
+  const newComment = c[1].value;
+  const commentId = c[0].value;
+
+  updateCommentAjax(newComment, commentId, i);
+};
+
+const updateCommentAjax = async (newComment, commentId, index) => {
+  const response = await axios({
+    url: `/api/${commentId}/updateComment`,
+    method: "POST",
+    data: {
+      newComment
+    }
+  });
+
+  if (response.status == 200) {
+    updateCommentFake(newComment, index);
+  }
+};
+
+const updateCommentFake = (newComment, index) => {
+  updateForm[index].removeChild(document.getElementById("updateInput"));
+
+  const text = document.createElement("div");
+  text.setAttribute("class", "comment__text");
+  text.innerHTML = newComment;
+
+  updateForm[index].appendChild(text);
+};
+
 const handleDelete = e => {
   let i;
 
@@ -97,22 +163,32 @@ const handleDelete = e => {
   }
 
   let c = deleteBtn[i].childNodes;
-  deleteComment(c[1].value);
+  deleteComment(c[1].value, i);
 };
 
-const deleteComment = async id => {
-  console.log(`여기는 js ${id}`);
-
+const deleteComment = async (id, index) => {
+  const videoId = window.location.href.split("/videos/")[1];
   const response = await axios({
     url: `/api/${id}/deleteComment`,
     method: "POST",
     data: {
-      commentId: id
+      commentId: id,
+      videoId
     }
   });
   if (response.status === 200) {
-    console.log(response);
+    deleteCommentFake(index);
   }
+};
+
+const deleteCommentFake = index => {
+  const deleteList = document.getElementsByClassName("comment__box");
+
+  const elem = deleteList[index];
+
+  elem.parentNode.removeChild(elem);
+
+  commentNumber.innerHTML = parseInt(commentNumber.innerHTML) - 1;
 };
 
 const init = () => {
@@ -124,6 +200,14 @@ const init = () => {
 
   Array.from(deleteBtn).forEach(element => {
     element.addEventListener("click", handleDelete);
+  });
+
+  Array.from(updateBtn).forEach(element => {
+    element.addEventListener("click", handleUpdate);
+  });
+
+  Array.from(updateForm).forEach(element => {
+    element.addEventListener("submit", updateComment);
   });
 };
 

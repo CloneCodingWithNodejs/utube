@@ -1,4 +1,6 @@
 //const express = require('express')
+import "@babel/polyfill";
+import path from "path";
 import express from "express";
 import morgan from "morgan";
 import helmet from "helmet";
@@ -31,11 +33,11 @@ app.use(helmet());
 //view directory 설정하고싶으면
 //app.set("view", "디렉토리경로")
 app.set("view engine", "pug");
-
+app.set("views", path.join(__dirname, "views"));
 //비디오 재생
 app.use("/uploads", express.static("uploads"));
 //webpack에서 사용할 정적 파일 불러옴
-app.use("/static", express.static("static"));
+app.use("/static", express.static(path.join(__dirname, "static")));
 
 app.use(cookieParser());
 //json에 대한 데이터도 서버가 이해해줬음 좋겠음

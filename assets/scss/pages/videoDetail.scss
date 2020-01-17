@@ -64,7 +64,8 @@
   input {
     width: 100%;
     height: 36px;
-    margin-top: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     padding-left: 10px;
     border-radius: 5px;
     box-shadow: 2px 2px 0px 1px gray;
@@ -125,16 +126,28 @@
   right: 1px;
   display: none;
 
-  a:nth-child(1) {
-    color: none;
+  i:nth-child(1) {
     position: absolute;
     left: 20px;
     top: 10px;
   }
-  a:nth-child(2) {
-    color: black;
+
+  i:nth-child(2) {
     position: absolute;
     left: 20px;
     top: 47px;
+  }
+}
+
+.info__div {
+  input {
+    font-family: "baemin";
+    font-size: 15pt;
+    width: 100%;
+    box-sizing: border-box;
+    width: 80%;
+    border-bottom: 1px solid gray;
+    background: none;
+    height: 28px;
   }
 }

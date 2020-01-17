@@ -52,11 +52,11 @@ export const getUpload = (req, res) =>
 export const postUpload = async (req, res) => {
   const {
     body: { title, description },
-    file: { path }
+    file: { location }
   } = req;
 
   const newVideo = await Video.create({
-    fileUrl: path,
+    fileUrl: location,
     title,
     description,
     //작성자는 현재 로그인한 사용자의 id임
@@ -218,11 +218,50 @@ export const postAddComment = async (req, res) => {
 //비디오 댓글 삭제
 
 export const postDeleteComment = async (req, res) => {
-  console.log("요청옴");
-
   const {
-    body: { commentId }
+    body: { commentId, videoId }
   } = req;
 
-  console.log(commentId);
+  console.log(videoId);
+
+  try {
+    //댓글 스키마에서 삭제
+    await Comment.findByIdAndDelete({ _id: commentId });
+
+    //비디오 스키마에서 삭제
+    const video = await Video.findByIdAndUpdate(
+      { _id: videoId },
+      {
+        $pull: { comments: commentId }
+      }
+    );
+    video.save();
+
+    res.status(200);
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+export const postUpdateComment = async (req, res) => {
+  const {
+    body: { newComment },
+    params: { id }
+  } = req;
+
+  console.log(`newComment : ${newComment} , commentId : ${id}`);
+
+  try {
+    //댓글 수정
+
+    await Comment.findByIdAndUpdate({ _id: id }, { text: newComment });
+  } catch (error) {
+    console.log(error);
+    res.status(400);
+  } finally {
+    res.end();
+  }
 };

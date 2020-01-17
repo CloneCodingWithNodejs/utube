@@ -34,16 +34,14 @@
 }
 
 .form-container__link {
-  background: #1c7ed6;
+  background: $blue;
   color: white;
   font-size: 15pt;
   font-weight: bold;
   cursor: pointer;
-  flex: 1;
-  height: 55px;
+  height: 43px;
   text-align: center;
   padding-top: 10px;
-  padding-bottom: 10px;
   border-radius: 5px;
   box-shadow: 3px 3px 5px 1px gray;
 }

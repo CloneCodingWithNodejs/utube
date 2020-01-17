@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 //DB가 어디에 연결되어있는지 주소를 입력함
-mongoose.connect(process.env.MONGO_URL, {
+mongoose.connect(process.env.MONGO_URL_PRODUCT, {
   useNewUrlParser: true,
   useFindAndModify: false
 });
