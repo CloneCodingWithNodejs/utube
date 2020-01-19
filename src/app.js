@@ -17,6 +17,7 @@ import session from "express-session";
 import "./passport";
 import MongoStore from "connect-mongo";
 import mongoose from "mongoose";
+import flash from "express-flash";
 
 const app = express();
 
@@ -54,6 +55,8 @@ app.use(
     store: new cookieStore({ mongooseConnection: mongoose.connection })
   })
 );
+
+app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());

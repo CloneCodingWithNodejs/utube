@@ -313,6 +313,10 @@ button {
   color: #b8b7b7;
   padding-bottom: 10px; }
 
+@font-face {
+  font-family: "baemin";
+  src: url(7dbe95a75200471524c4e5bc7a279708.ttf); }
+
 .flex__div {
   display: grid;
   -webkit-box-align: center;
@@ -320,22 +324,29 @@ button {
      -moz-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  grid-template-columns: repeat(4, 1fr); }
+  grid-template-columns: repeat(6, 1fr); }
 
-.form__container:nth-child(1) {
-  grid-column: span 1; }
+.form-container:nth-child(1) {
+  grid-column: span 2 !important; }
+
+.form-container:nth-child(2) {
+  grid-column: span 2 !important; }
 
 #join__form {
+  font-family: "baemin";
   background: white;
   -webkit-border-radius: 30px;
      -moz-border-radius: 30px;
           border-radius: 30px;
   padding-top: 15px;
   padding-bottom: 20px;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 30px;
+  padding-right: 30px;
   min-height: 700px;
-  min-width: 400px; }
+  min-width: 400px;
+  -webkit-box-shadow: 5px 5px 9px 1px gray;
+     -moz-box-shadow: 5px 5px 9px 1px gray;
+          box-shadow: 5px 5px 9px 1px gray; }
 
 #join__form form {
   margin-top: 10px;
@@ -351,6 +362,11 @@ button {
      -moz-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column; }
+  #join__form form span {
+    all: unset;
+    font-size: 10pt;
+    color: red;
+    font-weight: bold; }
 
 #join__form label {
   margin-bottom: 8px;
@@ -664,7 +680,7 @@ button {
   grid-column: span 1; }
 
 .form-container:nth-child(2) {
-  grid-column: span 4 !important;
+  grid-column: span 4;
   height: 500px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -738,23 +754,24 @@ button {
   grid-template-columns: repeat(7, 1fr); }
 
 .form__container:nth-child(1) {
-  grid-column: span 1; }
+  grid-column: span 2; }
 
 .form__container:nth-child(2) {
-  grid-column: span 4;
+  grid-column: span 2;
   background: white;
   -webkit-border-radius: 30px;
      -moz-border-radius: 30px;
           border-radius: 30px;
-  padding-top: 87px;
-  padding-bottom: 20px;
-  padding-left: 100px;
-  padding-right: 100px;
-  min-height: 500px;
+  padding-top: 40px;
+  padding-bottom: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top: 62px;
+  min-height: 380px;
   min-width: 400px;
-  -webkit-box-shadow: 3px 3px 10px 1px white;
-     -moz-box-shadow: 3px 3px 10px 1px white;
-          box-shadow: 3px 3px 10px 1px white; }
+  -webkit-box-shadow: 3px 3px 10px 1px gray;
+     -moz-box-shadow: 3px 3px 10px 1px gray;
+          box-shadow: 3px 3px 10px 1px gray; }
   .form__container:nth-child(2) form {
     margin-top: 10px;
     display: -webkit-box;
@@ -1119,3 +1136,93 @@ button {
 
 #file__div {
   font-size: 13pt; }
+
+@font-face {
+  font-family: "baemin";
+  src: url(7dbe95a75200471524c4e5bc7a279708.ttf); }
+
+@-webkit-keyframes flashAnimation {
+  0% {
+    -webkit-transform: translateY(-70px);
+            transform: translateY(-70px); }
+  10% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px); }
+  80% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px); }
+  100% {
+    -webkit-transform: translateY(-70px);
+            transform: translateY(-70px); } }
+
+@-moz-keyframes flashAnimation {
+  0% {
+    -moz-transform: translateY(-70px);
+         transform: translateY(-70px); }
+  10% {
+    -moz-transform: translateY(0px);
+         transform: translateY(0px); }
+  80% {
+    -moz-transform: translateY(0px);
+         transform: translateY(0px); }
+  100% {
+    -moz-transform: translateY(-70px);
+         transform: translateY(-70px); } }
+
+@-o-keyframes flashAnimation {
+  0% {
+    -o-transform: translateY(-70px);
+       transform: translateY(-70px); }
+  10% {
+    -o-transform: translateY(0px);
+       transform: translateY(0px); }
+  80% {
+    -o-transform: translateY(0px);
+       transform: translateY(0px); }
+  100% {
+    -o-transform: translateY(-70px);
+       transform: translateY(-70px); } }
+
+@keyframes flashAnimation {
+  0% {
+    -webkit-transform: translateY(-70px);
+       -moz-transform: translateY(-70px);
+         -o-transform: translateY(-70px);
+            transform: translateY(-70px); }
+  10% {
+    -webkit-transform: translateY(0px);
+       -moz-transform: translateY(0px);
+         -o-transform: translateY(0px);
+            transform: translateY(0px); }
+  80% {
+    -webkit-transform: translateY(0px);
+       -moz-transform: translateY(0px);
+         -o-transform: translateY(0px);
+            transform: translateY(0px); }
+  100% {
+    -webkit-transform: translateY(-70px);
+       -moz-transform: translateY(-70px);
+         -o-transform: translateY(-70px);
+            transform: translateY(-70px); } }
+
+.flash__message_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: center;
+  z-index: 10;
+  width: 100%;
+  -webkit-animation: flashAnimation 3s ease-in-out forwards;
+     -moz-animation: flashAnimation 3s ease-in-out forwards;
+       -o-animation: flashAnimation 3s ease-in-out forwards;
+          animation: flashAnimation 3s ease-in-out forwards;
+  font-weight: 800;
+  font-size: 15pt;
+  font-family: "baemin";
+  padding: 23px; }
+  .flash__message_container.success {
+    background-color: #1c7ed6;
+    color: white; }
+  .flash__message_container.error {
+    background-color: #ff5540;
+    color: white; }

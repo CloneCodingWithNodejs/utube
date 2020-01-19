@@ -5,20 +5,21 @@
 }
 
 .form__container:nth-child(1) {
-  grid-column: span 1;
+  grid-column: span 2;
 }
 
 .form__container:nth-child(2) {
-  grid-column: span 4;
+  grid-column: span 2;
   background: white;
   border-radius: 30px;
-  padding-top: 87px;
-  padding-bottom: 20px;
-  padding-left: 100px;
-  padding-right: 100px;
-  min-height: 500px;
+  padding-top: 40px;
+  padding-bottom: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top: 62px;
+  min-height: 380px;
   min-width: 400px;
-  box-shadow: 3px 3px 10px 1px white;
+  box-shadow: 3px 3px 10px 1px gray;
 
   form {
     margin-top: 10px;

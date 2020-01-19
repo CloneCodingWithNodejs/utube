@@ -3899,6 +3899,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axio
 
 /***/ }),
 
+/***/ "./assets/js/join.js":
+/*!***************************!*\
+  !*** ./assets/js/join.js ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("var joinForm = document.getElementById(\"jsJoinform\");\nvar password1 = document.getElementById(\"jsPassword1\");\nvar password2 = document.getElementById(\"jsPassword2\");\nvar passwordSpan1 = document.getElementById(\"jsPasswordSpan1\");\nvar passwordSpan2 = document.getElementById(\"jsPasswordSpan2\");\n\nvar handleBlur = function handleBlur() {\n  if (/^[A-Za-z0-9]{6,12}$/.test(password1.value) == false) {\n    password1.value = \"\";\n    password2.value = \"\";\n    passwordSpan1.innerHTML = \"비밀번호를 확인해주세요\";\n  } else {\n    passwordSpan1.innerHTML = \"\";\n  }\n};\n\nvar handleBlur2 = function handleBlur2() {\n  if (password1.value !== password2.value) {\n    password1.value = \"\";\n    password2.value = \"\";\n    passwordSpan2.innerHTML = \"비밀번호 확인이 서로 일치하지않습니다\";\n  } else {\n    passwordSpan2.innerHTML = \"\";\n  }\n};\n\nvar init = function init() {\n  password1.addEventListener(\"blur\", handleBlur);\n  password2.addEventListener(\"blur\", handleBlur2);\n};\n\nif (joinForm) {\n  init();\n}\n\n//# sourceURL=webpack:///./assets/js/join.js?");
+
+/***/ }),
+
 /***/ "./assets/js/main.js":
 /*!***************************!*\
   !*** ./assets/js/main.js ***!
@@ -3907,7 +3918,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axio
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./assets/scss/styles.scss\");\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _videoPlayer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./videoPlayer */ \"./assets/js/videoPlayer.js\");\n/* harmony import */ var _videoPlayer__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_videoPlayer__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _videoRecoder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./videoRecoder */ \"./assets/js/videoRecoder.js\");\n/* harmony import */ var _videoRecoder__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_videoRecoder__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _addComment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./addComment */ \"./assets/js/addComment.js\");\n/* harmony import */ var _upload__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./upload */ \"./assets/js/upload.js\");\n/* harmony import */ var _upload__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_upload__WEBPACK_IMPORTED_MODULE_4__);\n\n\n\n\n\n\n//# sourceURL=webpack:///./assets/js/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./assets/scss/styles.scss\");\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _videoPlayer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./videoPlayer */ \"./assets/js/videoPlayer.js\");\n/* harmony import */ var _videoPlayer__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_videoPlayer__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _videoRecoder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./videoRecoder */ \"./assets/js/videoRecoder.js\");\n/* harmony import */ var _videoRecoder__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_videoRecoder__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _addComment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./addComment */ \"./assets/js/addComment.js\");\n/* harmony import */ var _upload__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./upload */ \"./assets/js/upload.js\");\n/* harmony import */ var _upload__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_upload__WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var _join__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./join */ \"./assets/js/join.js\");\n/* harmony import */ var _join__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_join__WEBPACK_IMPORTED_MODULE_5__);\n\n\n\n\n\n\n\n//# sourceURL=webpack:///./assets/js/main.js?");
 
 /***/ }),
 

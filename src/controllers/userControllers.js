@@ -12,6 +12,7 @@ export const postJoin = async (req, res, next) => {
   } = req;
 
   if (password !== password2) {
+    req.flash("error", "비밀번호가 일치하지 않습니다");
     res.status(400);
     res.render("join", { pageTitle: "Join" });
   } else {
@@ -40,17 +41,23 @@ export const getLogin = (req, res) =>
 //로그인 버튼을 클릭했을때
 export const postLogin = passport.authenticate("local", {
   failureRedirect: routes.login,
-  successRedirect: routes.home
+  successRedirect: routes.home,
+  failureFlash: "로그인 실패 비밀번호나 이메일을 확인해주세요",
+  successFlash: "로그인 성공 -Welcome-"
 });
 
 //로그아웃 처리
 export const logout = (req, res) => {
+  req.flash("success", "성공적으로 로그아웃 되었습니다");
   req.logout();
   res.redirect(routes.home);
 };
 
 //깃허브 로그인
-export const githubLogin = passport.authenticate("github");
+export const githubLogin = passport.authenticate("github", {
+  failureFlash: "로그인 실패 비밀번호나 이메일을 확인해주세요",
+  successFlash: "로그인 성공 -Welcome-"
+});
 
 //깃허브 로그인 콜백
 export const githubLoginCallback = async (
@@ -90,7 +97,10 @@ export const githubLoginCallback = async (
   }
 };
 
-export const facebookLogin = passport.authenticate("facebook");
+export const facebookLogin = passport.authenticate("facebook", {
+  failureFlash: "로그인 실패 비밀번호나 이메일을 확인해주세요",
+  successFlash: "로그인 성공 -Welcome-"
+});
 
 export const facebookLoginCallback = async (
   accessToken,

@@ -1,0 +1,43 @@
+@import "../font.scss";
+
+@keyframes flashAnimation {
+  0% {
+    transform: translateY(-70px);
+  }
+
+  10% {
+    transform: translateY(0px);
+  }
+
+  80% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(-70px);
+  }
+}
+
+.flash__message_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: center;
+  z-index: 10;
+  width: 100%;
+  animation: flashAnimation 3s ease-in-out forwards;
+  font-weight: 800;
+  font-size: 15pt;
+  font-family: "baemin";
+  padding: 23px;
+
+  &.success {
+    background-color: $blue;
+    color: white;
+  }
+
+  &.error {
+    background-color: $red;
+    color: white;
+  }
+}

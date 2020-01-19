@@ -1,26 +1,41 @@
+@import "../font.scss";
+
 .flex__div {
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
 }
-.form__container:nth-child(1) {
-  grid-column: span 1;
+.form-container:nth-child(1) {
+  grid-column: span 2 !important;
+}
+
+.form-container:nth-child(2) {
+  grid-column: span 2 !important;
 }
 
 #join__form {
+  font-family: "baemin";
   background: white;
   border-radius: 30px;
   padding-top: 15px;
   padding-bottom: 20px;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 30px;
+  padding-right: 30px;
   min-height: 700px;
   min-width: 400px;
+  box-shadow: 5px 5px 9px 1px gray;
 }
 #join__form form {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
+
+  span {
+    all: unset;
+    font-size: 10pt;
+    color: red;
+    font-weight: bold;
+  }
 }
 
 #join__form label {
