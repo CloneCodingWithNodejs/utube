@@ -1,12 +1,13 @@
-@import "../font.scss";
+@import '../font.scss';
 
 .flex__div {
   display: grid;
   align-items: center;
   grid-template-columns: repeat(6, 1fr);
 }
-.form-container:nth-child(1) {
-  grid-column: span 2 !important;
+
+#empty {
+  grid-column: span 2;
 }
 
 .form-container:nth-child(2) {
@@ -14,7 +15,7 @@
 }
 
 #join__form {
-  font-family: "baemin";
+  font-family: 'baemin';
   background: white;
   border-radius: 30px;
   padding-top: 15px;

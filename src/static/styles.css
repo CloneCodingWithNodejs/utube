@@ -326,14 +326,14 @@ button {
           align-items: center;
   grid-template-columns: repeat(6, 1fr); }
 
-.form-container:nth-child(1) {
-  grid-column: span 2 !important; }
+#empty {
+  grid-column: span 2; }
 
 .form-container:nth-child(2) {
   grid-column: span 2 !important; }
 
 #join__form {
-  font-family: "baemin";
+  font-family: 'baemin';
   background: white;
   -webkit-border-radius: 30px;
      -moz-border-radius: 30px;
@@ -1081,7 +1081,7 @@ button {
 .flex__div__upload {
   display: grid;
   grid-template-columns: repeat(4, 1fr); }
-  .flex__div__upload .form-container:nth-child(2) {
+  .flex__div__upload #upload__form {
     grid-column: span 2 !important;
     padding-top: 0px !important; }
   .flex__div__upload .record-container {
@@ -1107,7 +1107,7 @@ button {
   .flex__div__upload label {
     cursor: pointer;
     margin-bottom: 0px !important; }
-  .flex__div__upload input[type="file"] {
+  .flex__div__upload input[type='file'] {
     display: none; }
 
 #loadingScreen {
